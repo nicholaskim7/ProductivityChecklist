@@ -1,3 +1,5 @@
+// Utilizing skills learned from tier 1 project
+// productivity checklist
 "use client"
 import React, { useState, use, useEffect } from 'react'
 import styles from '../../css/productivity.module.css';
@@ -76,3 +78,7 @@ else {
 }
 }
 
+// Future Plans:
+// Better UI
+// User authentication
+// database integration
