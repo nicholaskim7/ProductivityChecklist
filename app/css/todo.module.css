@@ -1,0 +1,101 @@
+.container {
+  width: 50%;
+  margin-left: 380px;
+}
+
+
+.label {
+  margin-left: 8px;
+}
+
+.ul {
+  border:1px solid darkseagreen;
+}
+
+.li {
+  border:1px solid darkseagreen;
+  text-indent: 22px;
+
+}
+
+.li:hover {
+  background-color:lightblue;
+  color:cornflowerblue;
+  font-weight: bold;
+  text-indent: 12px;
+}
+
+.form {
+  border:1px solid darkseagreen;
+  margin-top: 42px;
+}
+
+
+.input {
+  background-color: darkseagreen;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-left: 8px;
+  color:midnightblue;
+  text-indent: 8px;
+  opacity: 0.6;
+}
+
+.input:focus{
+  background-color: aliceblue;
+}
+
+.submit {
+  background-color: cornflowerblue;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-left: 8px;
+  width: 90px;
+}
+
+.submit:hover {
+  background-color:dodgerblue;
+}
+
+.delete {
+  background-color:brown;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-left: 42px;
+  width: 90px;
+  position: absolute;
+  left:55%;
+  height:25px;
+}
+
+.delete:hover {
+  background-color: crimson;
+}
+
+
+.complete {
+  background-color:mediumseagreen;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-left: 42px;
+  width: 90px;
+  position: absolute;
+  left:66%;
+  height:25px;
+}
+
+.complete:hover {
+  background-color:mediumaquamarine;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* what we learned */
+/* --basic CSS styling
+   -- on hover / on focus changes to the UI
+
+
+*/
