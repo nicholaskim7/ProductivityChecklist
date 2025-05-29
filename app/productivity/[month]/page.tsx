@@ -5,18 +5,17 @@ import React, { useState, use, useEffect } from 'react'
 import styles from '../../css/productivity.module.css';
 
 export default function productivity({ params }: { params: Promise<{ month: string }> }) {
-  const { month } = use(params);
+  const { month } = use(params); // Unwrap the params from the dynamic segment from the url
 
   const rows = Array.from({ length: 31 }, (_, i) => i+1); // 31 days for typical month will fix later
 
   const months = ["january", "febuary", "march","april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
-  const columns = ['apps', 'leet', 'system', 'read', 'cardio'];
+  const columns = ['apps', 'leet', 'system', 'read', 'cardio']; // my daily commitments
 
   const [isChecked, setIsChecked] = useState<{ [key: string]: boolean }>({}); // mapping keys to booleans to keep track of multiple checkbox states 
   // Example: ("2-leet" : False) This represents day 2 of column leetcode and it is currently False meaning it is not checked off.
 
-  const [storedData, setStoredData] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
       const localData = localStorage.getItem(`checkedBoxes-${month.toLowerCase()}`); // grab all stored checkedBox states for the month that is passed through url. (month specific localstorage)
@@ -27,17 +26,17 @@ export default function productivity({ params }: { params: Promise<{ month: stri
     }, []);
 
   const handleCheck = (row: number, col: string) => {
-    const key = `${row}-${col}`; // compute the checkbox that was clicked unique key
+    const key = `${row}-${col}`; // compute a unique key for the checkbox that was clicked
     setIsChecked(prev => {
       const updated = { ...prev, [key]: !prev[key] }; // coppies the prev state and flips the value for just that checkbox key. logs the entire isChecked object when a checkbox is clicked
       console.log("Updated checked state: ", updated);
-      localStorage.setItem(`checkedBoxes-${month.toLowerCase()}`, JSON.stringify(updated)); // after any change to any check boxes state update local storage to month specific localstorage
-      return updated;
+      localStorage.setItem(`checkedBoxes-${month.toLowerCase()}`, JSON.stringify(updated)); // after any change to any checkboxe's state update local storage of month specific localstorage
+      return updated; // return updated so that setIsChecked knows what the new state should be
     });
     // only the clicked checkbox updates
   };
 
-  if (months.includes(month.toLowerCase())) {
+  if (months.includes(month.toLowerCase())) { //ensure valid month is entered in url
   return (
     <div className={styles.container}>
       <h1>{month}</h1>
@@ -60,7 +59,7 @@ export default function productivity({ params }: { params: Promise<{ month: stri
                 <input
                   key={key}
                   type="checkbox"
-                  checked={!!isChecked[key]} // !! ensures that the result is either true or false. Undefined, or not checked off boxes will defualt to False
+                  checked={!!isChecked[key]} // !! ensures that the result is either true or false. Undefined, or new not checked off boxes, will defualt to False
                   onChange={() => handleCheck(day, col)} // individually updated
                 />
               );
@@ -71,7 +70,7 @@ export default function productivity({ params }: { params: Promise<{ month: stri
     </div>
   )
 }
-else {
+else { // if valid month is not entered display feedback message
   return (
     <h1>Please visit a valid month</h1>
   )
